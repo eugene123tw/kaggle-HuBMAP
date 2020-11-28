@@ -1,0 +1,24 @@
+general:
+  dataset_root: "/home/cosmonio/input/HuBMAP"
+  seed: 42
+
+model:
+  arch: ""
+
+logger:
+  key: ${env:COMET_KEY}
+
+solver:
+  batch_size: 16
+  class_name: torch.optim.Adam
+  lr: 0.02
+  epochs: 50
+
+dataset:
+  num_workers: 4
+  train: "train/"
+  test: "test/"
+
+hydra:
+  run:
+    dir: /tmp/${now:%Y-%m-%d}/${now:%H-%M-%S}
