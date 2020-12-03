@@ -1,1 +1,1 @@
-from util import read_tiff
+from .util import read_tiff
