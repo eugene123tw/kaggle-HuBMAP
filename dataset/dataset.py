@@ -48,13 +48,7 @@ class HubDataset(Dataset):
                     if self.masks[-1][x1:x2, y1:y2].sum() > self.threshold or np.random.randint(100) > 120:
                         self.slices.append([i, x1, x2, y1, y2])
 
-                        image = dataset.read([1, 2, 3],
-                                             window=Window.from_slices((x1, x2), (y1, y2)))
-
-                        #                         if image.std().mean() < 10:
-                        #                             continue
-
-                        # print(image.std().mean(), self.masks[-1][x1:x2,y1:y2].sum())
+                        image = dataset.read([1, 2, 3], window=Window.from_slices((x1, x2), (y1, y2)))
                         image = np.moveaxis(image, 0, -1)
                         self.x.append(image)
                         self.y.append(self.masks[-1][x1:x2, y1:y2])
